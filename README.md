@@ -1,6 +1,5 @@
 <br>
-<h1 align="center">Computational mathematics final project
-</h1>
+<h1 align="center">Computational mathematics final project</h1>
 <div align="center">
     <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/abrahamayquipa/computational-mathematics-final-project">
     <img alt="GitHub forks" src="https://img.shields.io/github/forks/abrahamayquipa/computational-mathematics-final-project">
