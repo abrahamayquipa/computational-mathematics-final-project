@@ -1,75 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
-# Función para generar matriz simétrica
-def generar_matriz_simetrica(n):
-    matriz = np.random.randint(0, 5, size=(n, n))
-    for i in range(n):
-        for j in range(i+1, n):
-            matriz[j, i] = matriz[i, j]
-    return matriz
-
-# Función para ingresar matriz manualmente
-def ingresar_matriz(n):
-    matriz = np.zeros((n, n))
-    for i in range(n):
-        for j in range(i+1, n):
-            valor = int(input(f"Ingrese el valor para la posición ({i+1}, {j+1}): "))
-            matriz[i, j] = valor
-            matriz[j, i] = valor
-    return matriz
-
-# Algoritmo de Dijkstra para camino mínimo
-def dijkstra(matriz, inicio, destino):
-    n = len(matriz)
-    distancias = [float("inf")] * n
-    prev = [-1] * n
-    distancias[inicio] = 0
-    vertices_no_visitados = list(range(n))
-    
-    while vertices_no_visitados:
-        vertice_actual = min(vertices_no_visitados, key=lambda vertice: distancias[vertice])
-        vertices_no_visitados.remove(vertice_actual)
-        
-        for vertice, peso in enumerate(matriz[vertice_actual]):
-            ruta_candidata = distancias[vertice_actual] + peso
-            if ruta_candidata < distancias[vertice]:
-                distancias[vertice] = ruta_candidata
-                prev[vertice] = vertice_actual
-
-    camino = []
-    while destino != -1:
-        camino.insert(0, destino)
-        destino = prev[destino]
-        
-    return camino
-
-# Función para mostrar grafo
-def mostrar_grafo(matriz):
-    n = len(matriz)
-    
-    fig, ax = plt.subplots()
-    coords = [(np.cos(2 * np.pi * i / n), np.sin(2 * np.pi * i / n)) for i in range(n)]
-    
-    # Dibuja nodos
-    for x, y in coords:
-        ax.scatter(x, y, s=500)
-        
-    # Dibuja aristas y etiquetas
-    for i in range(n):
-        for j in range(i+1, n):
-            if matriz[i, j]:
-                x1, y1 = coords[i]
-                x2, y2 = coords[j]
-                ax.plot([x1, x2], [y1, y2], 'k-')
-                
-
-    # Nombre de nodos
-    for i, (x, y) in enumerate(coords):
-        ax.text(x, y, str(i+1), ha='center', va='center', color='white')
-    
-    plt.axis("off")
-    plt.show()
+import matriz
+import caminos
+import grafos
 
 def main():
     n = int(input("Ingrese el valor de n (entre 5 y 15): "))
