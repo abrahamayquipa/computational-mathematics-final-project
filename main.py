@@ -1,30 +1,31 @@
-import numpy as np
-import matplotlib.pyplot as plt
-import matriz
+import matrices
 import caminos
 import grafos
 
 def main():
-    n = int(input("Ingrese el valor de n (entre 5 y 15): "))
-    if not 5 <= n <= 15:
-        print("Valor de n fuera de rango.")
+    print("\nMENU PROYECTO 2:")
+    valorIngresado = int(input("Ingrese el valor de n(5-15): "))
+    if not 5 <= valorIngresado <= 15:
+        print("Número n invalido.")
         return
 
-    opcion = input("¿Desea generar la matriz aleatoriamente? (s/n): ")
-    if opcion.lower() == 's':
-        matriz = generar_matriz_simetrica(n)
+    print("a. Generar matriz aleatoria")
+    print("b. Generar matriz manualmente")
+    opcion = input("Ingresar opcion: ")
+    if opcion.lower() == "a":
+        matriz = matrices.generarMatrizAleatoria(valorIngresado)
     else:
-        matriz = ingresar_matriz(n)
+        matriz = matrices.generarMatrizManaulmente(valorIngresado)
     print("Matriz generada:")
     print(matriz)
     
-    v1 = int(input(f"Seleccione el primer vértice (entre 1 y {n}): ")) - 1
-    v2 = int(input(f"Seleccione el segundo vértice (entre 1 y {n}): ")) - 1
+    primerVertice= int(input(f"Seleccione el primer vértice (entre 1 y {valorIngresado}): ")) - 1
+    segundoVertice = int(input(f"Seleccione el segundo vértice (entre 1 y {valorIngresado}): ")) - 1
 
-    camino = dijkstra(matriz, v1, v2)
-    print(f"El camino mínimo entre {v1+1} y {v2+1} es: {' -> '.join(map(str, [x+1 for x in camino]))}")
+    camino = caminos.caminoMinimo(matriz, primerVertice, segundoVertice)
+    print(f"El camino mínimo entre {primerVertice + 1} y {segundoVertice + 1} es:\n{' -> '.join(map(str, [x + 1 for x in camino]))}")
 
-    mostrar_grafo(matriz)
+    grafos.generarGrafo(matriz)
 
 if __name__ == "__main__":
     main()
