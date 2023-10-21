@@ -1,19 +1,20 @@
-import numpy
+import numpy as np
 import random
 
 def generarMatrizAleatoria(n):
-    # Crea la matriz segun sus dimensiones nxn
-    matriz = numpy.zeros((n, n))
+    # Crea la matriz segun sus dimensiones nxn con tipo de dato int
+    matriz = np.zeros((n, n), dtype=int)
 
     for i in range(n):
         for j in range(i, n):
-            valorAleatorio = random.randint(0, 4)
+            valorAleatorio = random.randint(0, 20)
             matriz[i, j] = valorAleatorio
             matriz[j, i] = valorAleatorio
     return matriz
 
 def generarMatrizManaulmente(n):
-    matriz = numpy.zeros((n, n))
+    # Crea la matriz segun sus dimensiones nxn con tipo de dato int
+    matriz = np.zeros((n, n), dtype=int)
     for i in range(n):
         for j in range(n):
             if i <= j:
