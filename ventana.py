@@ -1,3 +1,6 @@
+# Bibliografia:
+# https://stackoverflow.com/questions/25636804/centering-window-python-tkinter
+
 def centrarVentana(root):
     root.update_idletasks()
 

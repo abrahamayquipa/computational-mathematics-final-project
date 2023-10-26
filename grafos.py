@@ -21,7 +21,7 @@ def generarGrafo(matriz):
     # Dibuja aristas y etiquetas
     for i in range(n):
         for j in range(i + 1, n):
-            if matriz[i, j]:
+            if matriz[i][j]:
                 x1, y1 = coordenadas[i]
                 x2, y2 = coordenadas[j]
                 # k significa negro y - indica una línea continua.
